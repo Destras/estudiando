@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find All Digits</title>
+</head>
+<body>
+  <div>
+    algo
+  </div>
+  <script>
+    const digints = (array) => {
+      let x = ''
+      let res = 0;
+      array.map((item, index)=>{
+        [...String(item)].map((item2)=>{
+          if (!x.includes(item2)){
+            x = x + item2
+            if(x.length === 10){
+              res = index
+            }
+          }
+        })
+      })
+      return res
+    }
+    console.log(digints([5175, 4538, 2926, 5057, 6401, 4376, 2280, 6137, 8798, 9083]))
+  </script>
+</body>
+</html>

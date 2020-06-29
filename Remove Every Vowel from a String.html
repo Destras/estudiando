@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Every Vowel from a String</title>
+</head>
+<body>
+  <p id='demo'></p>
+  <script>
+    function removeVowels(str) {
+	    return [...str].map((item)=>{
+        if(item.toLowerCase() === 'a' ||item.toLowerCase() === 'e' ||item.toLowerCase() === 'i' ||item.toLowerCase() === 'o' ||item.toLowerCase() === 'u'){
+
+        }else{
+          return item
+        }
+      }).join('')
+    }
+    document.getElementById('demo').innerHTML = removeVowels("I have never seen a thin person drinking Diet Coke.")
+    console.log(removeVowels("I have never seen a thin person drinking Diet Coke."))
+  </script>
+</body>
+</html>

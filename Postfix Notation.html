@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postfix Notation</title>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>Postfix Notation</h1>
+  <script>
+    function postfix(expr) {
+      let x = expr.split(' ')
+      for(let i = 0; i< x.length; i++){
+        if(!/[+-/*]/.test(x[i]) && !/[+-/*]/.test(x[i + 1]) && /[+-/*]/.test(x[i + 2])){
+          i = i + 2
+          console.log('paso')
+        }else{
+         console.log('no paso')
+
+        }
+      }
+      console.log(/[+-/*]?/.test(''))
+    }
+    console.log(postfix("3 * 1 5 - 5 6 / 6"))
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>faunaNumber</title>
+</head>
+<body>
+  <script>
+    function faunaNumber(str) {
+      let x = []
+      animals = ["muggercrocodile", "one-hornedrhino", "python", "moth", "monitorlizard", "bengaltiger"]
+      str.split(' ').map((item, index)=>{
+        if(animals.includes(item.replace(/[,]/g, ''))){
+          console.log(item)
+          x = [...x, {[item.replace(/[,]/g, '')]:Number(str.split(' ')[index - 1])} ]
+        }
+      })
+      return x
+    }
+    console.log(faunaNumber("There are 24 one-hornedrhino, 50 python and 20000 mango."))
+  </script>
+</body>
+</html>

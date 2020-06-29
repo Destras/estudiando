@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Numbers</title>
+</head>
+<body>
+  <script>
+    function happy(n) {
+    if (String(n).includes('4')) {return false}
+	  for(let i = 0; i<= 20; i++){
+      n = [...String(n)].reduce((acum, item )=>{
+       return acum = acum + Math.pow(parseInt(item),2)
+      },0)
+      if(n === 1){
+        return true
+      }
+	  }
+    return false
+  }
+  console.log(happy(4125))
+  </script>
+</body>
+</html>

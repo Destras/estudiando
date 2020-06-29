@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orthogonal Vector</title>
+</head>
+<body>
+  <script>
+    function isOrthogonal(arr1, arr2) {
+	    return arr1.reduce((acum,item,idx)=>{
+        return acum = acum + (item * arr2[idx])
+	    },0) === 0 ? true : false
+    }
+    console.log(isOrthogonal([1, 2, 0], [2, -1, 10]))
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function pilishString(txt) {
+      const pi = [3,1,4,1,5,9,2,6,5,3,5,8,9,7,9]
+      let start = 0;
+      let res = '';
+      for (i of pi){
+        console.log(txt.substr(start, i).length,i)
+        if(txt.substr(start, i).length === i){
+        console.log('no pasa por alla')
+        res =  `${res} `+  txt.substr(start, i)
+        start = start + i
+        }else{
+          console.log('paso por aca')
+          return res.trim() = `${res} ` + txt.substr(start, i) + txt.substr(start, i).charAt(txt.substr(start, i).length - 1).repeat(i - txt.substr(start, i).length)
+        }
+      }
+      return res.trim()
+    }
+    console.log(pilishString('x'))
+  </script>
+</body>
+</html>

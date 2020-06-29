@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Powerful Numbers</title>
+</head>
+<body>
+
+  <script>
+    function isPowerful(num) {
+      let primos = []
+      for (let i = 2; i<num; i++ ){
+        if(num % i === 0){primos.push(i)}
+      }
+      return primos.filter((item)=>{
+        for (let i = 2; i<item; i++ ){
+        if(item % i === 0){return false}
+      }
+      return true
+      })
+      .every((item)=>num % Math.pow(item,2) === 0)
+
+    }
+    console.log(isPowerful(36))
+  </script>
+</body>
+</html>
