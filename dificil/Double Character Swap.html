@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Character Swap</title>
+</head>
+<body>
+    <div>
+        Double Character Swap
+Write a function to replace all instances of character c1 with character c2 and vice versa.
+
+Examples
+doubleSwap( "aabbccc", "a", "b") ➞ "bbaaccc"
+
+doubleSwap("random w#rds writt&n h&r&", "#", "&")
+➞ "random w&rds writt#n h#r#"
+
+doubleSwap("128 895 556 788 999", "8", "9")
+➞ "129 985 556 799 888"
+Notes
+Both characters will show up at least once in the string.
+    </div>
+    <script>
+        function doubleSwap(str, c1, c2) {
+            return [...str].map((item) => {
+                if(item === c1){ return c2}
+                if(item === c2){ return c1}
+                return item
+
+            }).join('')
+        }
+        console.log(doubleSwap( "aabbccc", "a", "b")) // "bbaaccc"
+
+        console.log(doubleSwap("random w#rds writt&n h&r&", "#", "&"))
+        // "random w&rds writt#n h#r#"
+
+        console.log(doubleSwap("128 895 556 788 999", "8", "9"))
+        // "129 985 556 799 888"
+    </script>
+</body>
+</html>

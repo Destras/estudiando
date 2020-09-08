@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Analyzer</title>
+</head>
+
+<body>
+    <div>
+        https://edabit.com/challenge/283cCDwXgNQvkdanj
+        Content Analyzer
+        Create a function that takes a string and returns an object. The returned object will have a common property for
+        all detected type content named contentType the possible values for this property are "HTML", "CSS", "TEXT".
+
+        Your function should be able to detect HTML and CSS else it's just TEXT.
+        If you detect HTML the returned object will have a special property named "tags". "tags" is an object with all
+        content tags name and how many times these tags were called in content (see example #3).
+        If you detect CSS, your returned object will have a special property named cssTargets. cssTargets is an object
+        with all content targets name and how many times these tags were called in content (see example #2).
+        If you don't detect HTML or CSS, the content is detected as TEXT and object will have a special property named
+        lineNumber (see example #1).
+        Examples
+        analyzeContent("this is a test\nSeems to work")
+        ➞ { contentType: "TEXT", lineNumber: 2 }
+
+        analyzeContent("body{blabla} a{color:#fff} a{ padding:0}")
+        ➞ { contentType: "CSS", cssTargets: { body: 1, a: 2 } }
+
+        analyzeContent("")
+        ➞ { contentType: "HTML", tags: { html: 1, div: 2 } }
+        Notes
+        If HTML content has been detected the returned object couldn't have cssTargets property and lineNumber property
+        and that's same for type of detection. Only the common proprety contentType stay inside the returned object.
+        and comments shoudn't be detected.
+        The content can be minified or not as needed.
+    </div>
+    <script>
+        function analyzeContent(content) {
+            var result = { contentType: "" }
+            let tipo = content.includes('<') ? 'HTML' : content.includes('\n') ? 'TEXT' : 'CSS'
+            if (tipo === 'HTML') {
+                const r = content.split('<')
+                result = { ...result, contentType: "HTML", tags: {} }
+                r.map((item, index) => {
+                    const largo = item.indexOf('>') !== -1 ? item.indexOf('>') : item.length
+                    const tag1 = item.split(' ')[0].slice(0, largo)
+                    if (!tag1.includes('/') && tag1 !== '') {
+                        result = { ...result, tags: { ...result.tags, [tag1]: result.tags[tag1] ? result.tags[tag1] + 1 : 1 } }
+                    }
+                })
+            }
+            if (tipo === 'TEXT') {
+                result = { ...result, contentType: 'TEXT', lineNumber: content.split('\n').length }
+            }
+            if (tipo === 'CSS') {
+                result = { ...result, contentType: 'CSS', cssTarget: {} }
+                const arr = content.split('{')
+                arr.map((item) => {
+                    const corda2 = item.split('}')
+                    if (corda2.length === 1) {
+                        return result = { ...result, cssTarget: { ...result.cssTarget, [corda2[0]]: result.cssTarget[corda2[0]] ? result.cssTarget[corda2[0]] + 1 : 1 } }
+                    }
+                    if (corda2[1] !== '') {
+                        return result = { ...result, cssTarget: { ...result.cssTarget, [corda2[1].trim()]: result.cssTarget[corda2[1].trim()] ? result.cssTarget[corda2[1].trim()] + 1 : 1 } }
+
+                    }
+                })
+            }
+            return result;
+        }
+        console.log(analyzeContent("this is a test\nSeems to work"))
+        // { contentType: "TEXT", lineNumber: 2 }
+
+        console.log(analyzeContent("body{blabla} a{color:colorcito} a{ padding:0}"))
+        // { contentType: "CSS", cssTargets: { body: 1, a: 2 } }
+
+        console.log(analyzeContent("<html ><div></div><div></div></html>"))
+        // { contentType: "HTML", tags: { html: 1, div: 2 } }
+    </script>
+</body>
+
+</html>

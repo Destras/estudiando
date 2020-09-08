@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Chain 2.0</title>
+</head>
+
+<body>
+    <div>
+        https://edabit.com/challenge/yGvaYr3X8xHPxWRcb
+        Word Chain 2.0
+        Let's update our previous word-chain definition. In this 2.0 version, a word-chain is an array of words, where
+        the next word is formed by either:
+
+        Changing exactly one letter from the previous word.
+        Adding or subtracting one letter.
+        Examples
+        isWordChain(["row", "crow", "crown", "brown", "brawn"]) ➞ true
+        // add "c" to "row" to get "crow", "n" to get "crown", etc.
+
+        isWordChain(["flew", "flaw", "flan", "flat", "fat", "rat", "rot", "tot"]) ➞ true
+
+        isWordChain(["meek", "meet", "meat", "teal"]) ➞ false
+        // "meat" => "teal" changes 2 letters (can only change 1).
+
+        isWordChain(["run", "runny", "bunny"]) ➞ false
+        // "run" => "runny" adds 2 letters (can only add 1).
+        Notes
+        You can only do one (not both) for each word change.
+        All words will be in lower-case.
+    </div>
+    <script>
+        function isWordChain(words) {
+                // Levenshtein distance se resuelve con una formula matematica
+            return words.every((item, index, words) => {
+                if (index === words.length - 1) return true
+                
+            })
+        }
+        console.log(isWordChain(["row", "crow", "crown", "brown", "brawn"]))// true
+        // add "c" to "row" to get "crow", "n" to get "crown", etc.
+
+        console.log(isWordChain(["flew", "flaw", "flan", "flat", "fat", "rat", "rot", "tot"]))// true
+
+        console.log(isWordChain(["meek", "meet", "meat", "teal"]))// false
+        // "meat" => "teal" changes 2 letters (can only change 1).
+
+        console.log(isWordChain(["run", "runny", "bunny"]))// false
+// "run" => "runny" adds 2 letters (can only add 1).
+    </script>
+</body>
+
+</html>

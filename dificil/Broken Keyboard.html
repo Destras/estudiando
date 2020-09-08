@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broken Keyboard</title>
+</head>
+
+<body>
+    <div>
+        https://edabit.com/challenge/pbK3wzLDvdwfEKgMt
+        Broken Keyboard
+        Given what is supposed to be typed and what is actually typed, write a function that returns the broken key(s).
+        The function looks like:
+
+        findBrokenKeys(correct phrase, what you actually typed)
+        Examples
+        findBrokenKeys("happy birthday", "hawwy birthday") ➞ ["p"]
+
+        findBrokenKeys("starry night", "starrq light") ➞ ["y", "n"]
+
+        findBrokenKeys("beethoven", "affthoif5") ➞ ["b", "e", "v", "n"]
+        Notes
+        Broken keys should be ordered by when they first appear in the sentence.
+        Only one broken key per letter should be listed.
+        Letters will all be in lower case.
+    </div>
+    <script>
+        function findBrokenKeys(str1, str2) {
+            const arr = [];
+            [...str1].map((item, index) => {
+                if(item !== str2[index]){
+                    arr.push(item)
+                }
+            })
+            return [...new Set(arr)]
+        }
+
+        console.log(findBrokenKeys("happy birthday", "hawwy birthday")) // ["p"]
+
+        console.log(findBrokenKeys("starry night", "starrq light")) // ["y", "n"]
+
+        console.log(findBrokenKeys("beethoven", "affthoif5")) // ["b", "e", "v", "n"]
+    </script>
+</body>
+
+</html>

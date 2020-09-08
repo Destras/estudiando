@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super-d Numbers</title>
+</head>
+
+<body>
+    <div>
+        https://edabit.com/challenge/fw8qrxpz2iGWh5QcE
+        Super-d Numbers
+        A number n becomes a super-d number when, for any digit d from 2 up to 9, the result of d * nᵈ contains d
+        consecutive digits equal to d.
+
+        Given a positive integer n, implement a function that returns:
+
+        "Super-d Number" if n is a super-d number, replacing the letterd with the digit (any from 2 up to 9) that makes
+        it super;
+        "Normal Number" if n is not a super-d number.
+        Examples
+        isSuperD(19) ➞ "Super-2 Number"
+        // when d = 2
+        // 2 * 19² = 722
+        // There are two (d) consecutives digits equal to 2 (d)
+
+        isSuperD(753) ➞ "Super-3 Number"
+        // when d = 3
+        // 3 * 753³ = 1280873331
+        // There are three (d) consecutives digits equal to 3 (d)
+
+        isSuperD(1168) ➞ "Super-4 Number"
+        // when d = 4
+        // 4 * 1168⁴ = 7444428488704
+        // There are four (d) consecutives digits equal to 4 (d)
+
+        isSuperD(24) ➞ "Normal Number"
+        // No cases where d * 24ᵈ (with d being any digit from 2 up to 9)...
+        // ...leads to a result containing d consecutive digits equal to d
+        Notes
+        Any given n will be a positive integer greater or equal to 0.
+    </div>
+    <script>
+        function isSuperD(n) {
+            for(let i = 2; i < 10 ; i++){
+                const number = BigInt(i) * (BigInt(n) ** BigInt(i))
+                const mirar = String(i).repeat(i)
+                if(String((number)).includes(mirar)){
+                    return `Super-${i} Number`
+                }
+            }
+            return `Normal Number`
+
+        }
+        console.log(isSuperD(185423))// "Super-8 Number"
+
+
+        console.log(isSuperD(753))// "Super-3 Number"
+        // when d = 3
+        // 3 * 753³ = 1280873331
+        // There are three (d) consecutives digits equal to 3 (d)
+
+        console.log(isSuperD(1168))// "Super-4 Number"
+        // when d = 4
+        // 4 * 1168⁴ = 7444428488704
+        // There are four (d) consecutives digits equal to 4 (d)
+
+        console.log(isSuperD(24))// "Normal Number"
+    // No cases where d * 24ᵈ (with d being any digit from 2 up to 9)...
+    </script>
+</body>
+
+</html>
