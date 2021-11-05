@@ -1,3 +1,1 @@
-# estudiando
-
-estudiandsoasd
+# Some problems I resolved from Edabit
